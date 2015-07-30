@@ -1,0 +1,36 @@
+{% extends 'contacts/base.html' %}
+
+{% block title %}通讯录{% endblock %}
+
+{% block content %}
+<table class="table table-bordered table-hover" >
+	<thead>
+		<tr>
+			<th>序号</th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>职位</th>
+            <th>电话</th>
+            <th>ICQ</th>
+            <th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+{% if contacts %}
+    {% for contact in contacts %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td> <a href="{% url 'detail'  contact.id %}">{{ contact.name }}</a> </td>
+            <td>{% if contact.sex == 1 %} 男 {% else %}女{% endif %} </td>
+            <td>{{ contact.level }}</td>
+            <td>{{ contact.tel }}</td>
+            <td>{{ contact.icq }}</td>
+            <td>{{ contact.email }}</td>
+        </tr>
+    {% endfor %}
+{% endif %}
+	</tbody>
+</table>
+{% endblock %}
+
+
