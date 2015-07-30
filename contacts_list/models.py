@@ -17,5 +17,7 @@ class User(models.Model):
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=100)
     level = models.IntegerField()
-    state = models.IntegerField
+    state = models.IntegerField()
+    def __unicode__(self):
+        return  self.username
 
