@@ -3,7 +3,11 @@
 {% block title %}通讯录{% endblock %}
 
 {% block content %}
-    <span><a href="{% url 'edit' contact.id %} ">编辑</a> </span>
+    <div>
+    <span><a href="{% url 'list' %}">返回列表</a></span>
+    <span><a href="/admin/contacts_list/contact/{{ contact.id }} ">编辑</a> </span>
+    <span><a href="{% url 'logout' %}">登出</a></span>
+    </div>
 <table class="table table-bordered table-hover" >
 	<!--
     <thead>
@@ -27,13 +31,13 @@
         </tr>
         <tr>
             <td>性别</td>
-            <td>{% if contact.state == 1  %}男{% else %}女{% endif %} </td>
+            <td>{{ contact.get_sex_display }} </td>
             <td></td>
             <td> </td>
         </tr>
         <tr>
             <td>职务</td>
-            <td>{{ contact.level }} </td>
+            <td>{{ contact.get_level_display }} </td>
             <td></td>
             <td> </td>
         </tr>
@@ -47,13 +51,13 @@
             <td>电话</td>
             <td> {{ contact.tel }}</td>
             <td>入职日期</td>
-            <td>{{ contact.name }}</td>
+            <td> </td>
         </tr>
         <tr>
             <td>ICQ</td>
             <td>{{ contact.icq }} </td>
             <td>状态</td>
-            <td> {% if contact.state == 1  %}在职{% else %}离职{% endif %}</td>
+            <td> {{ contact.get_state_display }}</td>
         </tr>
         <tr>
             <td>Email</td>

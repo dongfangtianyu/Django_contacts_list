@@ -3,6 +3,10 @@
 {% block title %}通讯录{% endblock %}
 
 {% block content %}
+    <div>
+        <span><a href="/admin/contacts_list/contact/add/">添加记录</a>|</span>
+        <span><a href="{%  url 'logout' %}">登出</a></span>
+    </div>
 <table class="table table-bordered table-hover" >
 	<thead>
 		<tr>
@@ -21,8 +25,8 @@
         <tr>
             <td>{{ forloop.counter }}</td>
             <td> <a href="{% url 'detail'  contact.id %}">{{ contact.name }}</a> </td>
-            <td>{% if contact.sex == 1 %} 男 {% else %}女{% endif %} </td>
-            <td>{{ contact.level }}</td>
+            <td>{{ contact.get_sex_display }} </td>
+            <td>{{ contact.get_level_display }}</td>
             <td>{{ contact.tel }}</td>
             <td>{{ contact.icq }}</td>
             <td>{{ contact.email }}</td>
